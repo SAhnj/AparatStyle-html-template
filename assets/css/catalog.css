@@ -1,0 +1,233 @@
+/* ============================================================
+   AparatStyle — catalog.css
+   ------------------------------------------------------------
+   Catalog / archive page:
+   breadcrumb + title + active filter chips (right column),
+   filter panel (categories / sort / discount / stores / price),
+   responsive product grid, mobile filters toggle.
+
+   WordPress → woocommerce/archive-product.php
+   (filters become real URLs: ?filter_color=…&max_price=…).
+   ============================================================ */
+
+.catalog {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: 24px 16px;
+}
+
+@media (min-width: 768px) {
+  .catalog { padding-inline: 24px; }
+}
+
+.catalog__layout {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+@media (min-width: 1024px) {
+  .catalog__layout { flex-direction: row; }
+}
+
+/* ------------------------- sidebar column ------------------------ */
+.catalog__side {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .catalog__side { width: 288px; }   /* lg:w-72 */
+}
+
+.catalog__title {
+  margin-top: 8px;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+/* removable active-filter chips (taxonomy / category / search) */
+.active-filters {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.active-filters:empty { display: none; }
+
+.active-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  font-size: 12px;
+  color: var(--ink-soft);
+  transition: background-color 0.2s ease;
+}
+
+.active-chip:hover { background: #e5e5e5; }
+.active-chip svg { color: var(--muted); }
+
+.catalog__count {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--faint);
+}
+
+/* mobile "filters & sorting" toggle */
+.filters-toggle {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+@media (min-width: 1024px) {
+  .filters-toggle { display: none; }
+}
+
+/* -------------------------- filter panel ------------------------- */
+.filters {
+  margin-top: 24px;
+  display: none;                     /* hidden on mobile until toggled */
+  padding: 20px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+}
+
+.filters.is-open { display: block; }
+
+@media (min-width: 1024px) {
+  .filters {
+    display: block;
+    margin-top: 24px;
+  }
+}
+
+/* vertical rhythm between filter groups (space-y-8) */
+.filters__group + .filters__group { margin-top: 32px; }
+
+.filters__title {
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* category list */
+.cat-list { display: grid; }
+
+.cat-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 10px;
+  font-size: 14px;
+  color: var(--ink-soft);
+  transition: color 0.2s ease;
+}
+
+.cat-list a:hover,
+.cat-list a.is-active { color: var(--ink); }
+
+.cat-list a.is-active { font-weight: 700; }
+.cat-list a svg { color: var(--line-300); }
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* "only discounted items" custom checkbox */
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.check-row label {
+  font-size: 14px;
+  color: #262626;
+  cursor: pointer;
+}
+
+.ap-check {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  border-radius: 4px;
+  border: 1px solid #a3a3a3;
+  background: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.ap-check:checked {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.ap-check:checked::after {
+  content: "";
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid var(--white);
+  border-bottom: 2px solid var(--white);
+  transform: rotate(-45deg) translateY(-1px);
+}
+
+/* store search + price inputs */
+.box-input {
+  width: 100%;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding-inline: 12px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  background: var(--white);
+}
+
+.box-input:focus { border-color: #a3a3a3; }
+
+.box-input + .box-input { margin-top: 12px; }
+
+.price-input { text-align: right; }
+
+.catalog__apply { margin-top: 4px; }
+
+/* --------------------------- product grid ------------------------ */
+.catalog__grid {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 16px;
+  align-content: start;
+}
+
+@media (min-width: 768px) {
+  .catalog__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.catalog__grid .ap-card[hidden] { display: none; }

@@ -1,0 +1,87 @@
+/* ============================================================
+   AparatStyle — page.css
+   ------------------------------------------------------------
+   Static pages & misc lists:
+   1. Privacy policy / any WP "page" (article typography)
+   2. Wishlist page grid (uses the shared product card)
+
+   WordPress → page.php + the_content() rendering;
+   wishlist grid → template-wishlist.php.
+   ============================================================ */
+
+/* ------------------- 1. document / WP page ----------------------- */
+.doc {
+  max-width: 896px;      /* max-w-4xl */
+  margin-inline: auto;
+  padding: 32px 16px;
+}
+
+@media (min-width: 768px) {
+  .doc { padding-inline: 24px; }
+}
+
+.doc__title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+@media (min-width: 768px) {
+  .doc__title { font-size: 24px; }
+}
+
+.doc__article {
+  margin-top: 32px;
+  display: grid;
+  gap: 32px;
+  font-size: 14px;
+  line-height: 2.28;               /* leading-8 */
+  color: var(--ink-soft);
+}
+
+.doc__article h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.doc__article p { margin-top: 8px; }
+
+.doc__article ul {
+  margin-top: 8px;
+  display: grid;
+  gap: 8px;
+  list-style: disc;
+  padding-inline-start: 24px;
+}
+
+.doc__article ul li::marker { color: var(--faint); }
+
+/* ---------------------- 2. wishlist page ------------------------- */
+.wishlist-page {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: 24px 16px;
+}
+
+@media (min-width: 768px) {
+  .wishlist-page { padding-inline: 24px; }
+}
+
+.wishlist-grid {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 16px;
+  align-content: start;
+}
+
+@media (min-width: 768px) {
+  .wishlist-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  .wishlist-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.wishlist-grid .ap-card[hidden] { display: none; }

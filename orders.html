@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>سفارش‌های من | آپارات‌استایل</title>
+  <meta name="description" content="سفارش‌های شما در آپارات‌استایل">
+  <!-- ============================================================
+       STYLES — every module has its own independent CSS file.
+       Only the modules a page needs are loaded (same strategy
+       as wp_enqueue_style with per-template conditionals).
+       ============================================================ -->
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/account.css">
+</head>
+<body>
+<!-- ============================================================
+     SECTION: PAGE HEADER (sub-header) — inner pages only, no footer
+     WordPress → header.php — the else-branch (title map + back link)
+     ============================================================ -->
+<header class="page-header">
+  <div class="page-header__in">
+    <a href="index.html" class="page-header__back">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      سفارش‌های من
+    </a>
+      <span class="page-header__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+  </div>
+</header>
+<!-- ============================================================
+     SECTION: ANNOUNCEMENT BAR — amber strip on top of every page
+     WordPress → template-parts/announcement-bar.php (text from Customizer)
+     ============================================================ -->
+<div class="announce">
+  <p>ثبت سفارش موقتاً غیرفعال است</p>
+</div>
+
+<main class="page-main">
+  <div class="account">
+    <h1 class="sr-only">سفارش‌های من</h1>
+
+    <!-- gate: not logged in -->
+    <div id="orders-login" class="account__gate">
+      <p>برای مشاهده سفارش‌های خود ابتدا وارد شوید.</p>
+      <button type="button" class="btn" id="orders-login-btn">ورود به حساب کاربری</button>
+    </div>
+
+    <!-- gate: logged in, no orders -->
+    <div id="orders-empty" class="account__gate" hidden>
+      <p>هنوز سفارشی ثبت نکرده‌اید.</p>
+      <a class="btn" href="catalog.html">شروع خرید</a>
+    </div>
+
+    <div id="orders-list" class="orders-list" hidden>
+<!-- ============================================================
+     SECTION: ORDER CARD — STATIC SAMPLE for design review
+     WordPress → WooCommerce orders table row
+     ============================================================ -->
+      <!-- account.js replaces this node at runtime (localStorage) -->
+      <article class="order-card">
+        <div class="order-card__head">
+          <p class="order-card__code">سفارش ۴۸۲۹۱۰</p>
+          <span class="status-chip status-chip--processing">در حال پردازش</span>
+        </div>
+        <p class="order-card__date">۱۴۰۵/۷/۲۴</p>
+        <div class="order-card__thumbs">
+          <img class="order-card__thumb" src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/4eb0669f503c.jpg" alt="پولوشرت یقه راه‌راه">
+          <span class="order-card__more">+۲</span>
+        </div>
+        <div class="order-card__total">
+          <span class="order-card__total-label">مبلغ پرداختی</span>
+          <span class="order-card__total-value">۴,۵۸۸,۰۰۰ تومان</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</main>
+
+  <!-- demo dataset (delete on WP) -->
+  <script src="assets/js/data.js" defer></script>
+  <!-- cart/wishlist state (delete on WP) -->
+  <script src="assets/js/store.js" defer></script>
+  <!-- page behaviour -->
+  <script src="assets/js/ui.js" defer></script>
+  <!-- page behaviour -->
+  <script src="assets/js/account.js" defer></script>
+</body>
+</html>

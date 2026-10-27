@@ -1,0 +1,269 @@
+/* ============================================================
+   AparatStyle — header.css
+   ------------------------------------------------------------
+   Top chrome of every page:
+   1. Announcement bar (amber strip)
+   2. Site header (sticky) — desktop row + mobile rows + dropdown
+      panels  → used on Home & Catalog ("full chrome" pages)
+   3. Page header (sub-header) — back link + title + icon
+      → used on inner pages (product, cart, wishlist, profile…)
+
+   WordPress → header.php renders one of the two variants,
+   announcement bar → template-parts/announcement-bar.php.
+   ============================================================ */
+
+/* --------------------- 1. announcement bar ------------------------ */
+.announce {
+  background: var(--amber);
+  color: var(--ink);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 16px;
+}
+
+@media (min-width: 768px) {
+  .announce { font-size: 14px; }
+}
+
+/* ------------------------- 2. site header ------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--white);
+}
+
+/* logo (shared with footer) */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  font-size: 20px;         /* text-xl (desktop header) */
+}
+
+.logo--sm { font-size: 18px; }  /* text-lg (mobile header)  */
+.logo--xl { font-size: 24px; }  /* text-2xl (footer)        */
+
+.logo__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+/* ----- desktop row: logo + cats | search | account/wish/cart ----- */
+.site-header__desktop {
+  display: none;
+  max-width: var(--container);
+  margin-inline: auto;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 24px;
+}
+
+@media (min-width: 768px) {
+  .site-header__desktop { display: flex; }
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cats-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.site-header__search {
+  width: 100%;
+  max-width: 576px;   /* max-w-xl */
+  margin-inline: auto;
+}
+
+/* pill search form (also used in the mobile row) */
+.search {
+  position: relative;
+  width: 100%;
+}
+
+.search__input {
+  width: 100%;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--white);
+  padding-inline-start: 16px;
+  padding-inline-end: 48px;
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.search__input::placeholder { color: var(--faint); }
+.search__input:focus { border-color: #a3a3a3; }
+
+.search__btn {
+  position: absolute;
+  inset-inline-end: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+
+.search__btn:hover { color: var(--ink); }
+
+/* icon buttons (account / wishlist / cart) */
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.icon-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--ink);
+  transition: background-color 0.2s ease;
+}
+
+.icon-btn:hover { background: var(--border-soft); }
+
+/* ----- mobile rows: logo+icons / search+burger -------------------- */
+.site-header__mobile {
+  padding: 12px 16px 8px;
+}
+
+@media (min-width: 768px) {
+  .site-header__mobile { display: none; }
+}
+
+.site-header__mobile-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-header__mobile-row--search {
+  margin-top: 12px;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.burger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  color: var(--ink);
+}
+
+/* ----- dropdown panels (categories / mobile menu) ----------------- */
+.header-panel {
+  position: absolute;
+  inset-inline: 0;
+  top: 100%;
+  z-index: 50;
+  background: var(--white);
+  border-bottom: 1px solid var(--border-soft);
+  box-shadow: 0 16px 32px -16px rgba(0, 0, 0, 0.15);
+  padding: 16px 24px;
+}
+
+.header-panel[hidden] { display: none; }
+
+.header-panel__grid {
+  max-width: var(--container);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px 32px;
+}
+
+@media (min-width: 768px) {
+  .header-panel__grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+.header-panel__grid a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #262626;
+  transition: background-color 0.2s ease;
+}
+
+.header-panel__grid a:hover { background: var(--border-soft); }
+
+/* --------------------- 3. page header (sub) ----------------------- */
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.page-header__in {
+  max-width: var(--container);
+  margin-inline: auto;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 16px;
+}
+
+@media (min-width: 768px) {
+  .page-header__in { padding-inline: 24px; }
+}
+
+.page-header__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  transition: opacity 0.2s ease;
+}
+
+.page-header__back:hover { opacity: 0.7; }
+
+.page-header__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--ink);
+}

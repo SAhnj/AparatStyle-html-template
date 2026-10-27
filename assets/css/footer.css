@@ -1,0 +1,86 @@
+/* ============================================================
+   AparatStyle — footer.css
+   ------------------------------------------------------------
+   Rounded grey footer box — shown ONLY on full-chrome pages
+   (Home + Catalog), pushed to the bottom by the flex layout.
+
+   WordPress → footer.php (wp_nav_menu location: "footer").
+   ============================================================ */
+
+.site-footer {
+  margin-top: auto;               /* sticky-footer behaviour */
+  padding: 12px;
+}
+
+@media (min-width: 768px) {
+  .site-footer { padding: 16px; }
+}
+
+.site-footer__box {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  padding: 32px 24px;
+  /* respect iOS safe area (matches the original) */
+  padding-bottom: max(2rem, env(safe-area-inset-bottom));
+}
+
+@media (min-width: 768px) {
+  .site-footer__box { padding: 40px; }
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media (min-width: 768px) {
+  .site-footer__inner {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+/* right column: brand + copyright */
+.site-footer__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.site-footer__copy {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* left column: 4 × 2 link grid */
+.site-footer__nav {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+
+@media (min-width: 640px) {
+  .site-footer__nav { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (min-width: 768px) {
+  .site-footer__nav { max-width: 672px; }   /* md:max-w-2xl */
+}
+
+.site-footer__col {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+}
+
+.site-footer__col a {
+  font-size: 14px;
+  color: #525252;
+  transition: color 0.2s ease;
+}
+
+.site-footer__col a:hover { color: var(--ink); }

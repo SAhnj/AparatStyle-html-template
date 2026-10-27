@@ -1,0 +1,251 @@
+/* ============================================================
+   AparatStyle — account.css
+   ------------------------------------------------------------
+   Account area: profile page (login hero / user card / menu
+   cards) and orders page (order cards with status chips).
+
+   WordPress → WooCommerce "My Account" endpoints
+   (woocommerce/account/*  — orders, downloads, addresses…).
+   ============================================================ */
+
+.account {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: 24px 16px;
+}
+
+@media (min-width: 768px) {
+  .account { padding-inline: 24px; }
+}
+
+.account__stack {
+  display: grid;
+  gap: 24px;
+}
+
+/* gate screens (login required / no orders yet) */
+.account__gate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 96px 24px;
+  text-align: center;
+}
+
+.account__gate[hidden] { display: none; }
+
+.account__gate p {
+  font-size: 14px;
+  color: #262626;
+}
+
+.account__gate .btn { margin-top: 32px; }
+
+/* ------------------------ login hero card ------------------------ */
+.login-hero {
+  border-radius: var(--radius-xl);
+  background: var(--ink);
+  padding: 24px;
+}
+
+@media (min-width: 768px) {
+  .login-hero { padding: 32px; }
+}
+
+.login-hero__title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--white);
+}
+
+@media (min-width: 768px) {
+  .login-hero__title { font-size: 20px; }
+}
+
+.login-hero__sub {
+  margin-top: 8px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.login-hero__btn {
+  margin-top: 24px;
+  width: 100%;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+  transition: transform 0.15s ease;
+}
+
+.login-hero__btn:hover { transform: scale(1.01); }
+
+/* --------------------------- user card --------------------------- */
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+  padding: 24px;
+}
+
+.user-card[hidden] { display: none; }
+
+.user-card__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--surface);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.user-card__meta { min-width: 0; }
+
+.user-card__name {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.user-card__phone {
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.user-card__logout {
+  margin-inline-start: auto;
+  height: 40px;
+  flex-shrink: 0;
+  padding-inline: 20px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.user-card__logout:hover {
+  border-color: #fca5a5;   /* red-300 */
+  color: var(--red);
+}
+
+/* ---------------------------- menu card -------------------------- */
+.menu-card {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+  padding-block: 8px;
+}
+
+.menu-card__heading {
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.menu-card__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-soft);
+  padding: 16px 20px;
+  font-size: 14px;
+  color: #262626;
+  transition: background-color 0.15s ease;
+}
+
+.menu-card__link:hover { background: #fafafa; }
+.menu-card__link svg { color: var(--line-300); }
+
+/* --------------------------- order card -------------------------- */
+.orders-list {
+  margin-top: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+.orders-list[hidden] { display: none; }
+
+.order-card {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+  padding: 20px;
+}
+
+.order-card__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.order-card__code {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* order status pill */
+.status-chip {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-chip--processing { background: #fef3c7; color: #92400e; }   /* amber */
+.status-chip--muted      { background: var(--border-soft); color: #525252; }
+
+.order-card__date {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--faint);
+}
+
+.order-card__thumbs {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.order-card__thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: var(--surface);
+  object-fit: cover;
+}
+
+.order-card__more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: var(--surface);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.order-card__total {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px dashed var(--border);
+  padding-top: 16px;
+  font-size: 14px;
+}
+
+.order-card__total-label { color: var(--muted); }
+.order-card__total-value { font-weight: 700; }

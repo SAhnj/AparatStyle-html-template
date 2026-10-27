@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>حساب کاربری | آپارات‌استایل</title>
+  <meta name="description" content="حساب کاربری آپارات‌استایل">
+  <!-- ============================================================
+       STYLES — every module has its own independent CSS file.
+       Only the modules a page needs are loaded (same strategy
+       as wp_enqueue_style with per-template conditionals).
+       ============================================================ -->
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/account.css">
+</head>
+<body>
+<!-- ============================================================
+     SECTION: PAGE HEADER (sub-header) — inner pages only, no footer
+     WordPress → header.php — the else-branch (title map + back link)
+     ============================================================ -->
+<header class="page-header">
+  <div class="page-header__in">
+    <a href="index.html" class="page-header__back">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      حساب کاربری
+    </a>
+      <span class="page-header__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+  </div>
+</header>
+<!-- ============================================================
+     SECTION: ANNOUNCEMENT BAR — amber strip on top of every page
+     WordPress → template-parts/announcement-bar.php (text from Customizer)
+     ============================================================ -->
+<div class="announce">
+  <p>ثبت سفارش موقتاً غیرفعال است</p>
+</div>
+
+<main class="page-main">
+  <div class="account account__stack">
+    <h1 class="sr-only">حساب کاربری</h1>
+
+<!-- ============================================================
+     SECTION: GUEST STATE — dark login hero card
+     WordPress → WooCommerce My Account login form
+     ============================================================ -->
+    <section id="profile-guest" class="login-hero">
+      <h2 class="login-hero__title">وارد شو تا همه‌چیز سُرِ چاییش بمونه</h2>
+      <p class="login-hero__sub">برای مشاهده پروفایل خود ابتدا وارد شوید.</p>
+      <button type="button" class="login-hero__btn" id="profile-login-btn">ورود یا عضویت رایگان</button>
+    </section>
+
+<!-- ============================================================
+     SECTION: LOGGED-IN STATE — user card
+     WordPress → account details from WP user
+     ============================================================ -->
+    <section id="profile-user" class="user-card" hidden>
+      <span class="user-card__avatar" data-user-avatar>ک</span>
+      <div class="user-card__meta">
+        <p class="user-card__name" data-user-name>کاربر آپارات‌استایل</p>
+        <p class="user-card__phone">۰۹۱۲ ••• ••۴۲</p>
+      </div>
+      <button type="button" class="user-card__logout" id="profile-logout-btn">خروج</button>
+    </section>
+
+<!-- ============================================================
+     SECTION: QUICK LINKS — orders / wishlist
+     WordPress → My Account navigation items
+     ============================================================ -->
+    <nav id="profile-links" class="menu-card" hidden>
+      <a class="menu-card__link" href="orders.html">
+        سفارش‌های من
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </a>
+      <a class="menu-card__link" href="wishlist.html">
+        ذخیره‌های من
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </a>
+    </nav>
+
+<!-- ============================================================
+     SECTION: HELP & RULES card
+     WordPress → static page links (page.php)
+     ============================================================ -->
+    <section class="menu-card">
+      <h2 class="menu-card__heading">راهنما و قوانین</h2>
+      <a class="menu-card__link" href="privacy.html">
+        سیاست‌نامه حریم خصوصی
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </a>
+      <a class="menu-card__link" href="privacy.html">
+        قوانین و مقررات آپارات‌استایل
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </a>
+    </section>
+  </div>
+</main>
+
+  <!-- demo dataset (delete on WP) -->
+  <script src="assets/js/data.js" defer></script>
+  <!-- cart/wishlist state (delete on WP) -->
+  <script src="assets/js/store.js" defer></script>
+  <!-- page behaviour -->
+  <script src="assets/js/ui.js" defer></script>
+  <!-- page behaviour -->
+  <script src="assets/js/account.js" defer></script>
+</body>
+</html>

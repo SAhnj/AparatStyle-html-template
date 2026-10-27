@@ -1,0 +1,357 @@
+/* ============================================================
+   AparatStyle — product.css
+   ------------------------------------------------------------
+   Single product page:
+   breadcrumb → gallery (arrows / tools / counter) + info column
+   (brand, title, price, color & size option chips, CTA row,
+   services card, accordions) → similar products slider.
+
+   WordPress → woocommerce/single-product.php +
+   template-parts/product/services.php (hooked into the summary).
+   ============================================================ */
+
+.product {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: 16px;
+}
+
+@media (min-width: 768px) {
+  .product { padding: 32px 24px; }
+}
+
+.product__layout {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 1024px) {
+  .product__layout {
+    grid-template-columns: 1.15fr 1fr;
+    align-items: start;
+  }
+}
+
+/* ---------------------------- gallery ---------------------------- */
+.gallery {
+  position: relative;
+  align-self: start;
+  height: fit-content;
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  padding: 16px;
+}
+
+@media (min-width: 768px) {
+  .gallery { padding: 24px; }
+}
+
+.gallery__img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+}
+
+/* heart + share — top LEFT (physical, like the original) */
+.gallery__tools {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.tool-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+}
+
+.tool-btn:hover { transform: scale(1.05); }
+.tool-btn.is-active svg { fill: currentColor; }
+
+/* prev / next image arrows (physical sides) */
+.gallery__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
+}
+
+.gallery__nav:hover { background: #fafafa; }
+
+.gallery__nav--prev { right: 12px; }
+.gallery__nav--next { left: 12px; }
+
+.gallery__nav[hidden] { display: none; }
+
+/* "۱ از ۲" counter pill */
+.gallery__counter {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+  direction: rtl;
+}
+
+/* ------------------------- info column --------------------------- */
+.product__brand {
+  font-size: 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--line-300);
+  text-underline-offset: 8px;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.product__brand:hover { text-decoration-color: var(--ink); }
+
+.product__title {
+  margin-top: 12px;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+@media (min-width: 768px) {
+  .product__title { font-size: 24px; }
+}
+
+.product__price-row {
+  margin-top: 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.product__price-old {
+  font-size: 16px;
+  color: var(--faint);
+  text-decoration: line-through;
+}
+
+.product__price {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.product__price-unit {
+  font-size: 16px;
+  font-weight: 400;
+  color: #525252;
+}
+
+.product__discount {
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--red-soft);
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ---------------------- option chips (طرح/سایز) ------------------- */
+.opt { margin-top: 28px; }
+
+.opt__label {
+  font-size: 14px;
+  color: #262626;
+}
+
+.opt__value { font-weight: 700; }
+
+.opt__row {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.opt-chip {
+  padding: 10px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  color: #262626;
+  transition: border-color 0.2s ease;
+}
+
+.opt-chip:hover:not(:disabled) { border-color: #737373; }
+
+.opt-chip.is-selected {
+  border: 2px solid var(--ink);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.opt-chip:disabled {
+  cursor: not-allowed;
+  border: 1px dashed var(--line-300);
+  color: var(--faint);
+  text-decoration: line-through;
+}
+
+/* ---------------------------- CTA row ---------------------------- */
+.product__cta {
+  margin-top: 32px;
+  display: flex;
+  gap: 12px;
+}
+
+.cta-wish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  color: var(--ink);
+  transition: border-color 0.2s ease;
+}
+
+.cta-wish:hover { border-color: #737373; }
+.cta-wish.is-active svg { fill: currentColor; }
+
+.cta-add {
+  flex: 1;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+  transition: transform 0.15s ease;
+}
+
+.cta-add:hover { transform: scale(1.01); }
+
+/* -------------------------- services card ------------------------ */
+.services {
+  margin-top: 32px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+}
+
+.services__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+}
+
+.services__row + .services__row { border-top: 1px solid var(--border-soft); }
+
+.services__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink-soft);
+}
+
+.services__body { flex: 1; min-width: 0; }
+
+.services__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.services__sub {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.services__price {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.services__price-unit {
+  font-weight: 400;
+  color: #525252;
+}
+
+/* --------------------------- accordions -------------------------- */
+.acc { margin-top: 24px; }
+
+.acc__item { border-bottom: 1px solid var(--border); }
+
+.acc__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.acc__chevron { flex-shrink: 0; transition: transform 0.2s ease; }
+
+.acc__item.is-open .acc__chevron { transform: rotate(180deg); }
+
+.acc__content {
+  display: none;
+  padding-bottom: 16px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: #525252;
+}
+
+.acc__item.is-open .acc__content { display: block; }
+
+/* spec rows inside "مشخصات کالا" */
+.spec-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--border);
+  padding-block: 12px;
+  font-size: 14px;
+}
+
+.spec-row:last-child { border-bottom: 0; }
+.spec-row__label { color: var(--muted); }
+.spec-row__value { color: #262626; }
+
+/* ----------------------- similar products ------------------------ */
+.similar { margin-top: 56px; }
+
+.similar__scroller {
+  margin-top: 20px;
+  overflow-y: hidden;    /* keep the horizontal scroller clean */
+}

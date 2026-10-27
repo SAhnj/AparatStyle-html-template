@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>زنانه | آپارات‌استایل</title>
+  <meta name="description" content="خرید زنانه از آپارات‌استایل">
+  <!-- ============================================================
+       STYLES — every module has its own independent CSS file.
+       Only the modules a page needs are loaded (same strategy
+       as wp_enqueue_style with per-template conditionals).
+       ============================================================ -->
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/product-card.css">
+  <link rel="stylesheet" href="assets/css/catalog.css">
+</head>
+<body data-taxonomy="women">
+<!-- ============================================================
+     SECTION: SITE HEADER (sticky) — full chrome, Home + Catalog pages only
+     WordPress → header.php — panels: wp_nav_menu / wp_list_categories
+     ============================================================ -->
+<header class="site-header">
+
+  <!-- desktop row: logo + cats | search | account/wishlist/cart -->
+  <div class="site-header__desktop">
+    <div class="site-header__brand">
+      <a href="index.html" class="logo " aria-label="آپارات‌استایل — صفحه اصلی"><span class="logo__mark" style="width:30px;height:30px" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M12 1.8c.9 5.4 4.8 9.3 10.2 10.2-5.4.9-9.3 4.8-10.2 10.2C11.1 16.8 7.2 12.9 1.8 12 7.2 11.1 11.1 7.2 12 1.8Z"/></svg></span><span>آپارات‌استایل</span></a>
+      <button type="button" class="cats-btn" data-panel="#panel-cats" aria-expanded="false" aria-controls="panel-cats">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <span>دسته‌بندها</span>
+      </button>
+    </div>
+
+    <div class="site-header__search">
+<form class="search" role="search" action="catalog.html" method="get">
+        <label class="sr-only" for="site-search">جستجو</label>
+        <input type="search" id="site-search" class="search__input" name="q" placeholder="جستجو در آپارات‌استایل" autocomplete="off">
+        <button type="submit" class="search__btn" aria-label="جستجو"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+      </form>
+    </div>
+
+    <div class="site-header__actions">
+        <a class="icon-btn" href="profile.html" aria-label="حساب کاربری">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <a class="icon-btn" href="wishlist.html" aria-label="ذخیره‌های من">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+          <span class="badge" data-wish-count hidden>۰</span>
+        </a>
+        <a class="icon-btn" href="cart.html" aria-label="سبد خرید">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="badge" data-cart-count hidden>۰</span>
+        </a>
+    </div>
+  </div>
+
+  <!-- mobile rows: logo + icons / search + burger -->
+  <div class="site-header__mobile">
+    <div class="site-header__mobile-row">
+      <a href="index.html" class="logo logo--sm" aria-label="آپارات‌استایل — صفحه اصلی"><span class="logo__mark" style="width:26px;height:26px" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M12 1.8c.9 5.4 4.8 9.3 10.2 10.2-5.4.9-9.3 4.8-10.2 10.2C11.1 16.8 7.2 12.9 1.8 12 7.2 11.1 11.1 7.2 12 1.8Z"/></svg></span><span>آپارات‌استایل</span></a>
+      <div class="site-header__actions">
+        <a class="icon-btn" href="profile.html" aria-label="حساب کاربری">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <a class="icon-btn" href="wishlist.html" aria-label="ذخیره‌های من">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+          <span class="badge" data-wish-count hidden>۰</span>
+        </a>
+        <a class="icon-btn" href="cart.html" aria-label="سبد خرید">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="badge" data-cart-count hidden>۰</span>
+        </a>
+      </div>
+    </div>
+    <div class="site-header__mobile-row site-header__mobile-row--search">
+<form class="search" role="search" action="catalog.html" method="get">
+        <label class="sr-only" for="site-search">جستجو</label>
+        <input type="search" id="site-search" class="search__input" name="q" placeholder="جستجو در آپارات‌استایل" autocomplete="off">
+        <button type="submit" class="search__btn" aria-label="جستجو"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+      </form>
+      <button type="button" class="burger" data-panel="#panel-menu" aria-expanded="false" aria-controls="panel-menu" aria-label="باز کردن منو">
+        <span data-icon="menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg></span>
+        <span data-icon="close" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- dropdown panel: categories (open via "دسته‌بندها") -->
+  <nav class="header-panel" id="panel-cats" hidden aria-label="دسته‌بندی‌ها">
+    <ul class="header-panel__grid">
+          <li><a href="catalog-women.html">زنانه</a></li>
+          <li><a href="catalog-men.html">مردانه</a></li>
+          <li><a href="catalog.html">بچگانه</a></li>
+          <li><a href="catalog.html">زیبایی و سلامت</a></li>
+          <li><a href="catalog.html">همه محصولات</a></li>
+    </ul>
+  </nav>
+
+  <!-- dropdown panel: mobile menu (open via burger) -->
+  <nav class="header-panel" id="panel-menu" hidden aria-label="منوی سایت">
+    <ul class="header-panel__grid">
+          <li><a href="catalog-women.html">زنانه</a></li>
+          <li><a href="catalog-men.html">مردانه</a></li>
+          <li><a href="catalog.html">بچگانه</a></li>
+          <li><a href="catalog.html">زیبایی و سلامت</a></li>
+          <li><a href="catalog.html">همه محصولات</a></li>
+    </ul>
+  </nav>
+</header>
+<!-- ============================================================
+     SECTION: ANNOUNCEMENT BAR — amber strip on top of every page
+     WordPress → template-parts/announcement-bar.php (text from Customizer)
+     ============================================================ -->
+<div class="announce">
+  <p>ثبت سفارش موقتاً غیرفعال است</p>
+</div>
+
+<main class="page-main">
+  <div class="catalog">
+    <div class="catalog__layout">
+
+<!-- ============================================================
+     SECTION: CATALOG SIDEBAR — filters & sorting
+     WordPress → woocommerce/archive-product.php (sidebar)
+     ============================================================ -->
+      <aside class="catalog__side">
+        <nav class="crumb" aria-label="مسیر">
+          <a href="index.html">آپارات‌استایل</a>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+          <span>زنانه</span>
+        </nav>
+        <h1 class="catalog__title" data-catalog-title>زنانه</h1>
+
+        <!-- removable active filters (taxonomy / category / search term) -->
+        <div class="active-filters" id="active-filters">
+          <a class="active-chip" href="catalog.html">
+            زنانه <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </a>
+        </div>
+
+        <p class="catalog__count" data-catalog-count>۹ کالا</p>
+
+        <!-- mobile: opens the filter panel -->
+        <button type="button" class="filters-toggle" data-toggle="#filters-panel" aria-expanded="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/></svg>
+          فیلترها و مرتب‌سازی
+        </button>
+
+        <div class="filters" id="filters-panel">
+
+          <!-- categories -->
+          <section class="filters__group">
+            <h3 class="filters__title">دسته‌ها</h3>
+            <div class="cat-list">
+                <a href="catalog.html?category=clothing">
+                  پوشاک <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+                </a>
+                <a href="catalog.html?category=shoes">
+                  کفش <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+                </a>
+                <a href="catalog.html?category=bag">
+                  کیف <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+                </a>
+                <a href="catalog.html?category=accessory">
+                  اکسسوری <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+                </a>
+            </div>
+          </section>
+
+          <!-- sort -->
+          <section class="filters__group">
+            <h3 class="filters__title">مرتب‌سازی</h3>
+            <div class="chip-row">
+                  <button type="button" class="chip is-active" data-sort="popular">پرفروش‌ترین</button>
+                  <button type="button" class="chip" data-sort="newest">جدیدترین</button>
+                  <button type="button" class="chip" data-sort="cheapest">ارزان‌ترین</button>
+                  <button type="button" class="chip" data-sort="expensive">گران‌ترین</button>
+                  <button type="button" class="chip" data-sort="discount">بیشترین تخفیف</button>
+            </div>
+          </section>
+
+          <!-- discount only -->
+          <section class="filters__group check-row">
+            <input type="checkbox" id="only-discount" class="ap-check" data-only-discount>
+            <label for="only-discount">فقط کالاهای تخفیف‌دار</label>
+          </section>
+
+          <!-- stores -->
+          <section class="filters__group">
+            <h3 class="filters__title">فروشگاه</h3>
+            <input type="search" class="box-input" data-store-search placeholder="جستجوی فروشگاه...">
+            <div class="chip-row mt-2">
+                  <button type="button" class="chip" data-store-filter="نارین">نارین</button>
+                  <button type="button" class="chip" data-store-filter="مانگو">مانگو</button>
+                  <button type="button" class="chip" data-store-filter="زارا">زارا</button>
+                  <button type="button" class="chip" data-store-filter="اچ اند ام">اچ اند ام</button>
+                  <button type="button" class="chip" data-store-filter="تری براون">تری براون</button>
+                  <button type="button" class="chip" data-store-filter="نایکی">نایکی</button>
+                  <button type="button" class="chip" data-store-filter="آدیداس">آدیداس</button>
+              <p class="catalog__count" data-store-none hidden>فروشگاهی پیدا نشد.</p>
+            </div>
+          </section>
+
+          <!-- price range -->
+          <section class="filters__group">
+            <h3 class="filters__title">قیمت</h3>
+            <input type="number" inputmode="numeric" class="box-input price-input" data-min-price placeholder="حداقل قیمت (تومان)">
+            <input type="number" inputmode="numeric" class="box-input price-input" data-max-price placeholder="حداکثر قیمت (تومان)">
+            <button type="button" class="btn btn--block catalog__apply" data-apply-price>اعمال</button>
+          </section>
+
+        </div>
+      </aside>
+
+<!-- ============================================================
+     SECTION: PRODUCT GRID — all products
+     WordPress → the WordPress loop (while have_posts)
+     ============================================================ -->
+      <div class="catalog__grid" id="catalog-grid">
+          <!-- products: زنانه -->
+  <article class="ap-card"
+    data-id="7e778e0285858f39" data-price="4588000" data-discount="0"
+    data-store="نارین" data-taxonomy="women" data-category="clothing"
+    data-name="پولوشرت یقه راه‌راه" data-brand="نارین">
+    <div class="ap-card__media">
+      <a class="ap-card__link" href="product.html" aria-label="پولوشرت یقه راه‌راه — نارین">
+        <img class="ap-card__img" src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/4eb0669f503c.jpg" alt="پولوشرت یقه راه‌راه" loading="lazy">
+      </a>
+      <button type="button" class="ap-card__wish" data-wish="7e778e0285858f39" aria-pressed="false" aria-label="افزودن به ذخیره‌ها">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+      </button>
+    </div>
+    <a class="ap-card__body" href="product.html">
+      <p class="ap-card__brand">نارین</p>
+      <h3 class="ap-card__name">پولوشرت یقه راه‌راه</h3>
+      <div class="ap-card__price">
+        <span class="ap-card__price-now">۴,۵۸۸,۰۰۰ <span class="ap-card__price-unit">تومان</span></span>
+      </div>
+    </a>
+  </article>
+  <article class="ap-card"
+    data-id="a1f2c3d4e5f60718" data-price="2228000" data-discount="0"
+    data-store="نارین" data-taxonomy="women" data-category="clothing"
+    data-name="شلوار جین مام فیت" data-brand="نارین">
+    <div class="ap-card__media">
+      <a class="ap-card__link" href="product.html" aria-label="شلوار جین مام فیت — نارین">
+        <img class="ap-card__img" src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/e585beb4a52f.jpg" alt="شلوار جین مام فیت" loading="lazy">
+      </a>
+      <button type="button" class="ap-card__wish" data-wish="a1f2c3d4e5f60718" aria-pressed="false" aria-label="افزودن به ذخیره‌ها">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+      </button>
+    </div>
+    <a class="ap-card__body" href="product.html">
+      <p class="ap-card__brand">نارین</p>
+      <h3 class="ap-card__name">شلوار جین مام فیت</h3>
+      <div class="ap-card__price">
+        <span class="ap-card__price-now">۲,۲۲۸,۰۰۰ <span class="ap-card__price-unit">تومان</span></span>
+      </div>
+    </a>
+  </article>
+  <article class="ap-card"
+    data-id="b2e3d4c5f6a71829" data-price="3990000" data-discount="0"
+    data-store="نارین" data-taxonomy="women" data-category="clothing"
+    data-name="شلوار جین آرا کالکشاد" data-brand="نارین">
+    <div class="ap-card__media">
+      <a class="ap-card__link" href="product.html" aria-label="شلوار جین آرا کالکشاد — نارین">
+        <img class="ap-card__img" src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/39a06e035902.jpg" alt="شلوار جین آرا کالکشاد" loading="lazy">
+      </a>
+      <button type="button" class="ap-card__wish" data-wish="b2e3d4c5f6a71829" aria-pressed="false" aria-label="افزودن به ذخیره‌ها">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+      </button>
+    </div>
+    <a class="ap-card__body" href="product.html">
+      <p class="ap-card__brand">نارین</p>
+      <h3 class="ap-card__name">شلوار جین آرا کالکشاد</h3>
+      <div class="ap-card__price">
+        <span class="ap-card__price-now">۳,۹۹۰,۰۰۰ <span class="ap-card__price-unit">تومان</span></span>
+      </div>
+    </a>
+  </article>
+  <article class="ap-card"
+    data-id="c3f4e5d6a7b82930" data-price="1680000" data-discount="0"
+    data-store="مانگو" data-taxonomy="women" data-category="clothing"
+    data-name="شومیز جین زنانه" data-brand="مانگو">
+    <div class="ap-card__media">
+      <a class="ap-card__link" href="product.html" aria-label="شومیز جین زنانه — مانگو">
+        <img class="ap-card__img" src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/59609e06200e.jpg" alt="شومیز جین زنانه" loading="lazy">
+      </a>
+      <button type="button" class="ap-card__wish" data-wish="c3f4e5d6a7b82930" aria-pressed="false" aria-label="افزودن به ذخیره‌ها">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+      </button>
+    </div>
+    <a class="ap-card__body" href="product.html">
+      <p class="ap-card__brand">مانگو</p>
+      <h3 class="ap-card__name">شومیز جین زنانه</h3>
+      <div class="ap-card__price">
+        <span class="ap-card__price-now">۱,۶۸۰,۰۰۰ <span class="ap-card__price-unit">تومان</span></span>
+      </div>
+    </a>
+  </article>
+  <article class="ap-card"
+    data-id="d4a5b6c7d8e93a41" data-price="5980000" data-discount="0"
+    data-store="زارا" data-taxonomy="women" data-category="clothing"
+    data-name="پیراهن ساتن مجلسی" data-brand="زارا">
+    <div class="ap-card__media">
+      <a class="ap-card__link" href="product.html" aria-label="پیراهن ساتن مجلسی — زارا">
+        <img class="ap-card__img" src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/cb5d990e0a12.webp" alt="پیراهن ساتن مجلسی" loading="lazy">
+      </a>
+      <button type="button" class="ap-card__wish" data-wish="d4a5b6c7d8e93a41" aria-pressed="false" aria-label="افزودن به ذخیره‌ها">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+      </button>
+    </div>
+    <a class="ap-card__body" href="product.html">
+      <p class="ap-card__brand">زارا</p>
+      <h3 class="ap-card__name">پیراهن ساتن مجلسی</h3>
+      <div class="ap-card__price">
+        <span class="ap-card__price-now">۵,۹۸۰,۰۰۰ <span class="ap-card__price-unit">تومان</span></span>
+      </div>
+    </a>
+  </article>
+  <article class="ap-card"
+    data-id="e5b6c7d8e9f04a52" data-price="6480000" data-discount="0"
+    data-store="زارا" data-taxonomy="women" data-category="clothing"
+    data-name="پالتو تک بلند" data-brand="زارا">
+    <div class="ap-card__media">
+      <a class="ap-card__link" href="product.html" aria-label="پالتو تک بلند — زارا">
+        <img class="ap-card__img" src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ff538ca5712e.jpg" alt="پالتو تک بلند" loading="lazy">
+      </a>
+      <button type="button" class="ap-card__wish" data-wish="e5b6c7d8e9f04a52" aria-pressed="false" aria-label="افزودن به ذخیره‌ها">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+      </button>
+    </div>
+    <a class="ap-card__body" href="product.html">
+      <p class="ap-card__brand">زارا</p>
+      <h3 class="ap-card__name">پالتو تک بلند</h3>
+      <div class="ap-card__price">
+        <span class="ap-card__price-now">۶,۴۸۰,۰۰۰ <span class="ap-card__price-unit">تومان</span></span>
+      </div>
+    </a>
+  </article>
+  <article class="ap-card"
+    data-id="f6c7d8e9fa015b63" data-price="3450000" data-discount="0"
+    data-store="تری براون" data-taxonomy="women" data-category="bag"
+    data-name="کیف دستی چرم طبیعی" data-brand="تری براون">
+    <div class="ap-card__media">
+      <a class="ap-card__link" href="product.html" aria-label="کیف دستی چرم طبیعی — تری براون">
+        <img class="ap-card__img" src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/28ea1e4f1868.png" alt="کیف دستی چرم طبیعی" loading="lazy">
+      </a>
+      <button type="button" class="ap-card__wish" data-wish="f6c7d8e9fa015b63" aria-pressed="false" aria-label="افزودن به ذخیره‌ها">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+      </button>
+    </div>
+    <a class="ap-card__body" href="product.html">
+      <p class="ap-card__brand">تری براون</p>
+      <h3 class="ap-card__name">کیف دستی چرم طبیعی</h3>
+      <div class="ap-card__price">
+        <span class="ap-card__price-now">۳,۴۵۰,۰۰۰ <span class="ap-card__price-unit">تومان</span></span>
+      </div>
+    </a>
+  </article>
+  <article class="ap-card"
+    data-id="a7d8e9fab0126c74" data-price="1780000" data-discount="0"
+    data-store="اچ اند ام" data-taxonomy="women" data-category="clothing"
+    data-name="شومیز تروپیکال" data-brand="اچ اند ام">
+    <div class="ap-card__media">
+      <a class="ap-card__link" href="product.html" aria-label="شومیز تروپیکال — اچ اند ام">
+        <img class="ap-card__img" src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b23b00e66e85.jpg" alt="شومیز تروپیکال" loading="lazy">
+      </a>
+      <button type="button" class="ap-card__wish" data-wish="a7d8e9fab0126c74" aria-pressed="false" aria-label="افزودن به ذخیره‌ها">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+      </button>
+    </div>
+    <a class="ap-card__body" href="product.html">
+      <p class="ap-card__brand">اچ اند ام</p>
+      <h3 class="ap-card__name">شومیز تروپیکال</h3>
+      <div class="ap-card__price">
+        <span class="ap-card__price-now">۱,۷۸۰,۰۰۰ <span class="ap-card__price-unit">تومان</span></span>
+      </div>
+    </a>
+  </article>
+  <article class="ap-card"
+    data-id="b8e9fa0b1237d85" data-price="2384000" data-discount="20"
+    data-store="زارا" data-taxonomy="women" data-category="bag"
+    data-name="کیف دوشی مینیمال" data-brand="زارا">
+    <div class="ap-card__media">
+      <a class="ap-card__link" href="product.html" aria-label="کیف دوشی مینیمال — زارا">
+        <img class="ap-card__img" src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/9f5e282e6241.jpg" alt="کیف دوشی مینیمال" loading="lazy">
+      </a>
+      <span class="ap-card__discount">٪۲۰</span>
+      <button type="button" class="ap-card__wish" data-wish="b8e9fa0b1237d85" aria-pressed="false" aria-label="افزودن به ذخیره‌ها">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+      </button>
+    </div>
+    <a class="ap-card__body" href="product.html">
+      <p class="ap-card__brand">زارا</p>
+      <h3 class="ap-card__name">کیف دوشی مینیمال</h3>
+      <div class="ap-card__price">
+      <del class="ap-card__price-old">۲,۹۸۰,۰۰۰</del>
+        <span class="ap-card__price-now">۲,۳۸۴,۰۰۰ <span class="ap-card__price-unit">تومان</span></span>
+      </div>
+    </a>
+  </article>
+      </div>
+
+      <!-- shown by catalog.js when no product matches the filters -->
+      <div id="catalog-empty" hidden>
+<div class="empty">
+          <span class="empty__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+          <h2 class="empty__title">کالایی پیدا نشد</h2>
+          <p class="empty__subtitle">فیلترها را تغییر دهید یا عبارت دیگری جستجو کنید.</p>
+          <div class="empty__action"><a class="btn" href="catalog.html">حذف فیلترها</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- ============================================================
+     SECTION: SITE FOOTER — rounded grey box, Home + Catalog only (sticky bottom)
+     WordPress → footer.php — wp_nav_menu location 'footer' + Customizer copyright
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="site-footer__box">
+    <div class="site-footer__inner">
+
+      <!-- brand column -->
+      <div class="site-footer__brand">
+        <a href="index.html" class="logo logo--xl" aria-label="آپارات‌استایل — صفحه اصلی"><span class="logo__mark" style="width:34px;height:34px" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="white"><path d="M12 1.8c.9 5.4 4.8 9.3 10.2 10.2-5.4.9-9.3 4.8-10.2 10.2C11.1 16.8 7.2 12.9 1.8 12 7.2 11.1 11.1 7.2 12 1.8Z"/></svg></span><span>آپارات‌استایل</span></a>
+        <p class="site-footer__copy">© ۱۴۰۴ آپارات‌استایل</p>
+      </div>
+
+      <!-- link columns (4 × 2) -->
+      <nav class="site-footer__nav" aria-label="پیوندهای سایت">
+        <ul class="site-footer__col">
+          <li><a href="#">درباره ما</a></li>
+          <li><a href="#">شرایط بازگشت کالا</a></li>
+        </ul>
+        <ul class="site-footer__col">
+          <li><a href="#">تماس با ما</a></li>
+          <li><a href="privacy.html">حریم خصوصی</a></li>
+        </ul>
+        <ul class="site-footer__col">
+          <li><a href="#">فروشنده شوید</a></li>
+          <li><a href="orders.html">پیگیری سفارش</a></li>
+        </ul>
+        <ul class="site-footer__col">
+          <li><a href="#">پرسش‌های متداول</a></li>
+          <li><a href="#">فرصت‌های شغلی</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+  <!-- demo dataset (delete on WP) -->
+  <script src="assets/js/data.js" defer></script>
+  <!-- cart/wishlist state (delete on WP) -->
+  <script src="assets/js/store.js" defer></script>
+  <!-- page behaviour -->
+  <script src="assets/js/ui.js" defer></script>
+  <!-- page behaviour -->
+  <script src="assets/js/catalog.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+/* ============================================================
+   AparatStyle — home.css
+   ------------------------------------------------------------
+   Home page sections:
+   1. Hero banners (4 category tiles)
+   2. Category circles slider
+   3. Newest products slider (+ CTA)
+   4. Top stores box (brand chips + product grid)
+
+   WordPress → front-page.php includes
+   template-parts/section/{hero,categories,newest,stores}.php
+   ============================================================ */
+
+/* --------------------- 1. hero banners --------------------------- */
+.hero { margin-top: 20px; }
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .hero__grid { gap: 16px; }
+}
+
+@media (min-width: 1024px) {
+  .hero__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.hero__tile {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+}
+
+.hero__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.hero__tile:hover .hero__img { transform: scale(1.05); }
+
+/* bottom→top dark gradient for the label */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) 50%, transparent);
+}
+
+.hero__label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: 800;
+  font-size: 18px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+@media (min-width: 768px) {
+  .hero__label { font-size: 24px; }
+}
+
+/* ------------------ 2. category circles slider ------------------- */
+.cats-scroller {
+  gap: 24px;
+  padding-bottom: 8px;   /* pb-2 — room for the hover scale */
+}
+
+.circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.circle__img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+@media (min-width: 768px) {
+  .circle__img { width: 96px; height: 96px; }
+}
+
+.circle__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.circle:hover .circle__img img { transform: scale(1.08); }
+
+.circle__label {
+  font-size: 13px;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .circle__label { font-size: 14px; }
+}
+
+/* ------------------- 3. newest products slider ------------------- */
+.newest-cta {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ---------------------- 4. top stores box ------------------------ */
+.stores-box {
+  margin-top: 20px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+  background: var(--white);
+  padding: 16px;
+}
+
+@media (min-width: 768px) {
+  .stores-box { padding: 24px; }
+}
+
+.stores-box__chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;    /* no vertical scrollbar — see base.css note */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.stores-box__chips::-webkit-scrollbar { display: none; }
+
+.stores-box__grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 16px;
+}
+
+@media (min-width: 768px) {
+  .stores-box__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
